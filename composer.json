@@ -1,0 +1,13 @@
+{
+    "name": "my-project/api-connection",
+    "description": "A sample API connection project.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Your Name",
+            "email": "your@email.com"
+        }
+    ],
+    "require": {}
+}
