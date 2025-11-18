@@ -1,0 +1,12 @@
+* text=auto
+
+*.php diff=php
+
+/.github export-ignore
+/.taskmaster export-ignore
+/.idea export-ignore
+/tests export-ignore
+.gitattributes export-ignore
+.gitignore export-ignore
+phpunit.xml export-ignore
+README.md export-ignore
