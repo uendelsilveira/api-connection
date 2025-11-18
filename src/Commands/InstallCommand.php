@@ -47,7 +47,7 @@ class InstallCommand extends Command
         $this->info('auth-api installed successfully.');
     }
 
-    private function createPasswordGrantClient()
+    private function createPasswordGrantClient(): void
     {
         $this->info('Creating a password grant client...');
         $clientName = $this->ask('What should we name the password grant client?', 'Default Password Client');
@@ -62,7 +62,7 @@ class InstallCommand extends Command
         $this->updateEnvFile($output);
     }
 
-    private function updateEnvFile($output)
+    private function updateEnvFile(string $output): void
     {
         $this->info('Updating .env file...');
 
@@ -86,15 +86,31 @@ class InstallCommand extends Command
 
         $envFileContent = file_get_contents($envFilePath);
 
+        if ($envFileContent === false) {
+            $this->error('Could not read .env file.');
+            return;
+        }
+
         $envFileContent = preg_replace('/^PASSPORT_PASSWORD_GRANT_CLIENT_ID=.*/m', 'PASSPORT_PASSWORD_GRANT_CLIENT_ID=' . $clientId, $envFileContent);
+        
+        if ($envFileContent === null) {
+            $this->error('Error updating PASSPORT_PASSWORD_GRANT_CLIENT_ID in .env file.');
+            return;
+        }
+
         $envFileContent = preg_replace('/^PASSPORT_PASSWORD_GRANT_CLIENT_SECRET=.*/m', 'PASSPORT_PASSWORD_GRANT_CLIENT_SECRET=' . $clientSecret, $envFileContent);
+
+        if ($envFileContent === null) {
+            $this->error('Error updating PASSPORT_PASSWORD_GRANT_CLIENT_SECRET in .env file.');
+            return;
+        }
 
         file_put_contents($envFilePath, $envFileContent);
 
         $this->info('Client credentials saved to .env file.');
     }
 
-    private function displayDocumentation()
+    private function displayDocumentation(): void
     {
         $this->info('---');
         $this->comment('Next steps:');
