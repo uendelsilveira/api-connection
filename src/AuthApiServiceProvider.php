@@ -1,14 +1,9 @@
 <?php
-/*
- By Uendel Silveira
- Developer Web
- IDE: PhpStorm
- Created: 18/11/2025 02:28:37
-*/
 
 namespace UendelSilveira\ApiConnection\AuthApi;
 
 use Illuminate\Support\ServiceProvider;
+use UendelSilveira\ApiConnection\AuthApi\Commands\InstallCommand;
 
 class AuthApiServiceProvider extends ServiceProvider
 {
@@ -22,6 +17,12 @@ class AuthApiServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                InstallCommand::class,
+            ]);
+        }
+        
         // Carrega rotas apenas se o arquivo existir e tiver conteúdo
         if (file_exists(__DIR__.'/Routes/api.php')) {
             $this->loadRoutesFrom(__DIR__.'/Routes/api.php');
@@ -42,4 +43,3 @@ class AuthApiServiceProvider extends ServiceProvider
         }
     }
 }
-
