@@ -1,0 +1,23 @@
+{
+  "name": "api-connection",
+  "version": "1.0.0",
+  "description": "[![Latest Version](https://img.shields.io/packagist/v/uendel-silveira/api-connection.svg)](https://packagist.org/packages/uendel-silveira/api-connection) [![Total Downloads](https://img.shields.io/packagist/dt/uendel-silveira/api-connection.svg)](https://packagist.org/packages/uendel-silveira/api-connection) [![License](https://img.shields.io/packagist/l/uendel-silveira/api-connection.svg)](https://packagist.org/packages/uendel-silveira/api-connection)",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^7.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^12.0.2",
+    "semantic-release": "^25.0.2"
+  }
+}
