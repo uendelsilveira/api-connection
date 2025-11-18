@@ -45,7 +45,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # necessário para semantic-release ver histórico
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -53,7 +53,7 @@ jobs:
           node-version: 20
 
       - name: Install Node dependencies
-        run: npm install
+        run: npm ci
 
       - name: Semantic Release
         env:
@@ -66,8 +66,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Notify Packagist
-        run: |
-          curl -X POST https://packagist.org/api/update-package?username=${{ secrets.PACKAGIST_USERNAME }}\&apiToken=${{ secrets.PACKAGIST_TOKEN }} \
-          -d '{"repository":{"url":"https://github.com/uendel-silveira/api-connection"}}' \
-          -H "Content-Type: application/json"
+      - name: Update Packagist
+        uses: packagist/actions-update@v1
+        with:
+          package_name: uendel-silveira/api-connection
+          packagist_username: ${{ secrets.PACKAGIST_USERNAME }}
+          packagist_token: ${{ secrets.PACKAGIST_TOKEN }}
