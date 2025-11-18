@@ -1,0 +1,12 @@
+
+
+[1;37;40mCode Coverage Report:    [0m
+[1;37;40m  2025-11-18 14:44:22    [0m
+[1;37;40m                         [0m
+[1;37;40m Summary:                [0m
+[37;41m  Classes: 50.00% (1/2)  [0m
+[37;41m  Methods: 33.33% (2/6)  [0m
+[37;41m  Lines:   33.85% (22/65)[0m
+
+UendelSilveira\ApiConnection\AuthApi\AuthApiServiceProvider
+  [30;42mMethods: 100.00% ( 2/ 2)[0m   [30;42mLines: 100.00% ( 18/ 18)[0m
