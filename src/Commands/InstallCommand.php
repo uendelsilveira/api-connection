@@ -1,4 +1,10 @@
 <?php
+/*
+ By Uendel Silveira
+ Developer Web
+ IDE: PhpStorm
+ Created: 18/11/2025 15:09:42
+*/
 
 namespace UendelSilveira\ApiConnection\AuthApi\Commands;
 
