@@ -1,0 +1,42 @@
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE/editor settings
+.idea/
+.vscode/
+.fleet/
+*.iml
+
+# Environment files
+.env
+.env.*
+
+# Dependency directories
+vendor/
+node_modules/
+
+# Composer lock file (commit in apps, ignore in libraries)
+composer.lock
+
+# Build/artifacts
+dist/
+build/
+coverage/
+
+# Caches & logs
+.phpunit.cache/
+.phpunit.result.cache
+phpunit.xml.cache
+cache/
+logs/
+storage/
+
+# Package managers logs
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Misc
+.sass-cache/
+*.log
