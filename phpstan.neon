@@ -4,14 +4,11 @@ parameters:
     paths:
         - src
 
-    autoload_files:
+    bootstrapFiles:
         - vendor/autoload.php
 
-    checkGenericClassInNonGenericObjectType: true
-    checkMissingIterableValueType: true
     treatPhpDocTypesAsCertain: false
 
 includes:
     - vendor/phpstan/phpstan-deprecation-rules/rules.neon
     - vendor/phpstan/phpstan-strict-rules/rules.neon
-    - vendor/phpstan/phpstan-phpunit/extension.neon
