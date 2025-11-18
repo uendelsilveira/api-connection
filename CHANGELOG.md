@@ -1,3 +1,16 @@
+# 1.0.0 (2025-11-18)
+
+
+### Bug Fixes
+
+* update security contact email in README.md ([c6d0779](https://github.com/uendelsilveira/api-connection/commit/c6d077958fa8ffc9b72f9cfe26b6efa508e32c8f))
+
+
+### Features
+
+* add initial configuration and structure for AuthApi package ([45f97ad](https://github.com/uendelsilveira/api-connection/commit/45f97addbb958ea6ccb7b3159020a5a4d28cc91b))
+* update tasks.json with AuthApi installation subtasks and dependencies ([c7172f5](https://github.com/uendelsilveira/api-connection/commit/c7172f53115e76da5a2e5775256cf38a605fa1e4))
+
 # Changelog
 
 Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
