@@ -1,0 +1,73 @@
+name: Release & Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  tests:
+    name: Run Tests & Static Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: xdebug
+          extensions: mbstring, json, curl, openssl, pdo, tokenizer, xml
+
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-interaction
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse
+
+      - name: Run PHPUnit with Coverage
+        run: vendor/bin/phpunit --coverage-clover coverage.xml
+
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage.xml
+
+  release:
+    name: Semantic Release + Tag
+    needs: tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # necessário para semantic-release ver histórico
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Node dependencies
+        run: npm install
+
+      - name: Semantic Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release
+
+  packagist:
+    name: Trigger Packagist Auto-Update
+    needs: release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Notify Packagist
+        run: |
+          curl -X POST https://packagist.org/api/update-package?username=${{ secrets.PACKAGIST_USERNAME }}\&apiToken=${{ secrets.PACKAGIST_TOKEN }} \
+          -d '{"repository":{"url":"https://github.com/uendel-silveira/api-connection"}}' \
+          -H "Content-Type: application/json"
