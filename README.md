@@ -88,7 +88,7 @@ Contribuições são bem-vindas! Por favor, sinta-se à vontade para enviar um P
 
 ## Segurança
 
-Se você descobrir algum problema de segurança, por favor envie um e-mail para [seu-email@exemplo.com] ao invés de usar o issue tracker.
+Se você descobrir algum problema de segurança, por favor envie um e-mail para [uendel.silveira@gmail.com] ao invés de usar o issue tracker.
 
 ## Créditos
 
